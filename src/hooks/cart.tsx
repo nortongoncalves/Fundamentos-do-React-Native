@@ -30,23 +30,93 @@ const CartProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     async function loadProducts(): Promise<void> {
-      // TODO LOAD ITEMS FROM ASYNC STORAGE
+      const storageProducts = await AsyncStorage.getItem(
+        '@GoMarketplace:products',
+      );
+
+      if (storageProducts) {
+        setProducts([...JSON.parse(storageProducts)]);
+      }
     }
 
     loadProducts();
   }, []);
 
-  const addToCart = useCallback(async product => {
-    // TODO ADD A NEW ITEM TO THE CART
-  }, []);
+  const addToCart = useCallback(
+    async (product: Product) => {
+      const isSameProduct = ({ id }: Product): boolean => id === product.id;
+      const productExist = products.find(isSameProduct);
+      let storageProducts: Product[] = [];
+      if (productExist) {
+        storageProducts = products.map(oneProduct =>
+          isSameProduct(oneProduct)
+            ? { ...oneProduct, quantity: oneProduct.quantity + 1 }
+            : oneProduct,
+        );
+        setProducts(storageProducts);
+      } else {
+        storageProducts = [...products, { ...product, quantity: 1 }];
+        setProducts(storageProducts);
+      }
+      console.log(storageProducts);
+      await AsyncStorage.setItem(
+        '@GoMarketplace:products',
+        JSON.stringify(storageProducts),
+      );
+    },
+    [products],
+  );
 
-  const increment = useCallback(async id => {
-    // TODO INCREMENTS A PRODUCT QUANTITY IN THE CART
-  }, []);
+  const increment = useCallback(
+    async id => {
+      const isSameProduct = (product: Product): boolean => product.id === id;
+      const product = products.find(isSameProduct);
+      let storageProducts: Product[] = [];
+      if (product) {
+        storageProducts = products.map(oneProduct =>
+          isSameProduct(oneProduct)
+            ? { ...oneProduct, quantity: oneProduct.quantity + 1 }
+            : oneProduct,
+        );
+        setProducts(storageProducts);
+      } else {
+        throw Error('Erro ao incrementar. tente novamente');
+      }
+      await AsyncStorage.setItem(
+        '@GoMarketplace:products',
+        JSON.stringify(storageProducts),
+      );
+    },
+    [products],
+  );
 
-  const decrement = useCallback(async id => {
-    // TODO DECREMENTS A PRODUCT QUANTITY IN THE CART
-  }, []);
+  const decrement = useCallback(
+    async id => {
+      const isSameProduct = (product: Product): boolean => product.id === id;
+      const product = products.find(isSameProduct);
+      let storageProducts: Product[] = [];
+      if (product && product.quantity !== 1) {
+        storageProducts = products.map(oneProduct =>
+          isSameProduct(oneProduct)
+            ? { ...oneProduct, quantity: oneProduct.quantity - 1 }
+            : oneProduct,
+        );
+        setProducts(storageProducts);
+      } else if (product && product.quantity === 1) {
+        storageProducts = [
+          ...products.filter(oneProduct => oneProduct.id !== product.id),
+        ];
+        setProducts(storageProducts);
+      } else {
+        throw Error('Erro ao incrementar. tente novamente');
+      }
+      await AsyncStorage.setItem(
+        '@GoMarketplace:products',
+        JSON.stringify(storageProducts),
+      );
+    },
+    [products],
+  );
 
   const value = React.useMemo(
     () => ({ addToCart, increment, decrement, products }),
