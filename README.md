@@ -32,7 +32,6 @@
   <br />
   <code>adb reverse tcp:3000 tcp:3000</code>
 </p>
-<br />
 <p align="justify">Se estiver usando linux execute o comando:
   <br />
   <code>yarn start</code>
