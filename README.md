@@ -6,9 +6,11 @@
 <hr/>
 <h2>Como Executar</h2>
 <p align="justify">Clone o repositório usando o comando: (não esqueça de estar na pasta que deseje que o repositório fique)
+  <br />
   <code>git clone https://github.com/nortongoncalves/Fundamentos-do-React-Native.git</code>
 </p>
 <p align="justify">após terminar o download entre na pasta e use o comando abaixo para instalar todas as dependencias
+  <br />
   <code>yarn install</code>
 </p>
 <p align="justify">temos algumas formas para executar o projeto:</p>
@@ -23,16 +25,20 @@
 <a href="https://react-native.rocketseat.dev/">🔗 Rocketseat Docs | Ambiente React Native</a>
 <br />
 <p align="justify">Antes de iniciar o projeto devemos executar o servidor(json-server).
+  <br />
   <code>yarn run server</code>
 </p>
 <p align="justify">E para o emulador conseguir se conectar com o servidor devemos executar o comando:
+  <br />
   <code>adb reverse tcp:3000 tcp:3000</code>
 </p>
 <br />
 <p align="justify">se estiver usando linux execute o comando:
+  <br />
   <code>yarn start</code>
 </p>
 <p align="justify">para iniciar o projeto use o comando:
+  <br />
   <code>yarn run android</code> --obs: se estiver usando ios troque o android para ios
 </p>
 <br />
