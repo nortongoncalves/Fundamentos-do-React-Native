@@ -22,5 +22,4 @@
 <br></br>
 <p align="justify">para iniciar o projeto use o comando</p>
 <code>yarn run android</code> --obs: se estiver usando ios troque o android para ios
->>>>>>> c29f42d23b3d6aa514cdec55c173b9bf06db0666
 <img src="./readme/device.png" />
