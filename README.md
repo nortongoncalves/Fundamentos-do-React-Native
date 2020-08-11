@@ -20,6 +20,8 @@
 <p align="justify"> Nesse site temos um ótimo tutorial que mostra as 3 opções acima </p>
 <a href="https://react-native.rocketseat.dev/">🔗 Rocketseat Docs | Ambiente React Native</a>
 <br></br>
+<p align="justify">Antes de iniciar o projeto devemos executar o servidor(json-server).</p>
+<code>yarn run server</code>
 <p align="justify">para iniciar o projeto use o comando</p>
 <code>yarn run android</code> --obs: se estiver usando ios troque o android para ios
 <img src="./readme/device.png" />
