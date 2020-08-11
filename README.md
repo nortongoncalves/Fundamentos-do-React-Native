@@ -19,9 +19,15 @@
 </ul>
 <p align="justify"> Nesse site temos um ótimo tutorial que mostra as 3 opções acima </p>
 <a href="https://react-native.rocketseat.dev/">🔗 Rocketseat Docs | Ambiente React Native</a>
-<br></br>
+<br />
 <p align="justify">Antes de iniciar o projeto devemos executar o servidor(json-server).</p>
 <code>yarn run server</code>
-<p align="justify">para iniciar o projeto use o comando</p>
+<p align="justify">E para o emulador conseguir se conectar com o servidor devemos executar o comando:</p>
+<code>adb reverse tcp:3000 tcp:3000</code>
+<br />
+<p align="justify">se estiver usando linux execute o comando:</p>
+<code>yarn start</code>
+<p align="justify">para iniciar o projeto use o comando:</p>
 <code>yarn run android</code> --obs: se estiver usando ios troque o android para ios
+<br />
 <img src="./readme/device.png" />
